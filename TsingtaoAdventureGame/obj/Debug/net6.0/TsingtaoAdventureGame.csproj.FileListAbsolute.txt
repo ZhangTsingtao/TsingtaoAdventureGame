@@ -1,0 +1,14 @@
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\bin\Debug\net6.0\TsingtaoAdventureGame.exe
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\bin\Debug\net6.0\TsingtaoAdventureGame.deps.json
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\bin\Debug\net6.0\TsingtaoAdventureGame.runtimeconfig.json
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\bin\Debug\net6.0\TsingtaoAdventureGame.dll
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\bin\Debug\net6.0\TsingtaoAdventureGame.pdb
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\obj\Debug\net6.0\TsingtaoAdventureGame.GeneratedMSBuildEditorConfig.editorconfig
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\obj\Debug\net6.0\TsingtaoAdventureGame.AssemblyInfoInputs.cache
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\obj\Debug\net6.0\TsingtaoAdventureGame.AssemblyInfo.cs
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\obj\Debug\net6.0\TsingtaoAdventureGame.csproj.CoreCompileInputs.cache
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\obj\Debug\net6.0\TsingtaoAdventureGame.dll
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\obj\Debug\net6.0\refint\TsingtaoAdventureGame.dll
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\obj\Debug\net6.0\TsingtaoAdventureGame.pdb
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\obj\Debug\net6.0\TsingtaoAdventureGame.genruntimeconfig.cache
+D:\Document\Github Projects\TsingtaoAdventureGame\TsingtaoAdventureGame\obj\Debug\net6.0\ref\TsingtaoAdventureGame.dll
