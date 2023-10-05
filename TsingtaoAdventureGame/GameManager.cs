@@ -9,9 +9,9 @@ namespace TsingtaoAdventureGame
 {
     public static class GameManager
     {
-        public static bool GetUserInput()//return a true or false of user input
+        public static bool GetUserInput(string a_sPrompt)//return a true or false of user input
         {
-            Console.WriteLine("Yes, type '1'; No, type '0'.");
+            //Console.WriteLine("Yes, type '1'; No, type '0'.");
 
             string m_sNumInput = "";
             m_sNumInput = Console.ReadLine();
@@ -20,7 +20,7 @@ namespace TsingtaoAdventureGame
                 || int.Parse(m_sNumInput) > 1)
             {
                 Console.WriteLine("Invalid input. Please enter a valid number.");
-                Console.WriteLine("Yes, type '1'; No, type '0'.");
+                Console.WriteLine(a_sPrompt);
                 m_sNumInput = Console.ReadLine();
             }
             //Console.WriteLine("Valid input.");
@@ -31,10 +31,8 @@ namespace TsingtaoAdventureGame
 
         //polymorphism
         //overloading
-        public static void Interact( HostileNPC a_hNPC) 
+        public static void Fight(HostileNPC a_hNPC) 
         {
-            Console.WriteLine("It's a hostile enemy!");
-            Console.WriteLine("Ready to Fight!");
             Console.WriteLine("");
             Console.WriteLine("----Round Start----");
             a_hNPC.Interact();

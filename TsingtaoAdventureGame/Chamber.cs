@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TsingtaoAdventureGame
 {
-    internal class Chamber
+    public class Chamber
     {
         public Chamber Previous;
         public Chamber Left;
@@ -15,7 +15,7 @@ namespace TsingtaoAdventureGame
 
         public static int ChamberCount = 0;
         public int ID;
-        public NPC ChamberNPC = new NPC();
+        public NPC ChamberNPC;
 
         public Chamber()
         {
@@ -24,17 +24,120 @@ namespace TsingtaoAdventureGame
             Console.WriteLine("ID: " + ID);
         }
 
-        public void Interact(HostileNPC a_hEnemy)
+        public void Interact()
         {
-            Console.WriteLine("You entered chamber " + ID);
+            Console.WriteLine("---------Chamber---------");
+            Console.WriteLine("You are in chamber " + ID);
+            //envoke chamber event
+            ChamberEvent();
 
-            Console.WriteLine("You saw a blur figure ahead, do you interact with it?");
-            if (GameManager.GetUserInput())
+
+
+            //After the event is ended, choose the path
+            Console.WriteLine(" ---Type '1' Go Forward, '0' Backward");
+            if (GameManager.GetUserInput(" ---Type '1' Go Forward, '0' Backward"))
+            //forward
             {
-                GameManager.Interact(a_hEnemy);
+                if(Left != null || Right != null)
+                {
+                    Console.WriteLine(" ---Type '1' Go Left, '0' Right");
+                    //go left
+                    if (GameManager.GetUserInput(" ---Type '1' Go Left, '0' Right"))
+                    {
+                        if(Left != null)
+                        {
+                            Player.CurretChamber = GoLeft();
+                        }
+                        else 
+                        {
+                            Console.WriteLine("There's no way to the left");
+                            Interact();
+                        }
+                    }
+                    //go right
+                    else
+                    {
+                        if (Right != null)
+                        {
+                            Player.CurretChamber = GoRight();
+                        }
+                        else
+                        {
+                            Console.WriteLine("There's no way to the right");
+                            Interact();
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No way ahead");
+                }
             }
+            else
+            //backward
+            {
+                if(Previous != null)
+                {
+                    Player.CurretChamber = GoBack();
+                }
+                else
+                {
+                    Console.WriteLine("Can't go back anymore. This is the start");
+                    Interact();
+                }
+            }
+
         }
 
+        public void Interact(HostileNPC a_hEnemy)
+        {
+            Console.WriteLine("Interaction Function with HostileNPC");
+
+            if (GameManager.GetUserInput(""))
+            {
+                GameManager.Fight(a_hEnemy);
+            }
+        }
+        public void ChamberEvent()
+        {
+            if(ChamberNPC != null)
+            {
+                if (ChamberNPC is HostileNPC)
+                {
+                    Console.WriteLine("There's a hostile NPC, you can't skip them");
+                    Console.WriteLine(" ---'1' Fight; '0' Go Back");
+                    
+                    while(ChamberNPC.HP > 0 && Player.HP > 0)
+                    {
+                        Console.WriteLine(" ---'1' Fight; '0' Flee");
+                        if (GameManager.GetUserInput(" ---'1' Fight; '0' Go Back"))
+                        {
+                            Console.WriteLine("---------Fight!---------");
+                            GameManager.Fight(ChamberNPC as HostileNPC);
+
+                            if (ChamberNPC.HP <= 0)//Victory
+                            {
+                                Console.WriteLine("Enemy is Defeated! You've won!");
+                                ChamberNPC = null;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                else
+                { 
+                    Console.WriteLine("There's a friendly NPC"); 
+                }
+            }
+            else { Console.WriteLine("No one's here"); }
+            
+        }
+
+        //reccursion
         public void BackToOrigin()
         {
             Console.WriteLine(ID);
@@ -44,7 +147,7 @@ namespace TsingtaoAdventureGame
             }
             else
             {
-                Console.WriteLine("Reached the root");
+                Console.WriteLine("Reached the root! From BackToOrigin");
             }
         }
 
@@ -57,7 +160,6 @@ namespace TsingtaoAdventureGame
                 return this;
             }
         }
-
         public Chamber GoLeft()
         {
             if (Left != null) { return Left; }

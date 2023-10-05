@@ -17,54 +17,66 @@
             Player.Name = nameInput;
 
 
+            //HostileNPC hostileNPC = new HostileNPC("monster", 1);
 
-            GenerateMap();
+            //while (Player.HP > 0)
+            //{
+            //    Console.WriteLine("Do you want to interact with it?");
 
+            //    if (GameManager.GetUserInput())
+            //    {
+            //        GameManager.Interact(hostileNPC);
+            //    }
+            //}
 
+            //Generate map, and also returns the last chamber, 
+            //if the player gets to the last chamber, the game ends
 
-            HostileNPC hostileNPC = new HostileNPC("monster", 1);
-
-            while (Player.HP > 0)
+            Chamber rootChamber = GenerateMap();
+            while (Player.CurretChamber != rootChamber)
             {
-                Console.WriteLine("Do you want to interact with it?");
-
-                if (GameManager.GetUserInput())
-                {
-                    GameManager.Interact(hostileNPC);
-                }
-            }  
+                Player.CurretChamber.Interact();
+            }
         }
 
-        public static void GenerateMap()
+        public static Chamber GenerateMap()
         {
-            Chamber cA = new Chamber();
-            Chamber cB = new Chamber();
-            Chamber cC = new Chamber();
-            Chamber cD = new Chamber();
-            Chamber cE = new Chamber();
-            Chamber cF = new Chamber();
-            Chamber cG = new Chamber();
-            Chamber cH = new Chamber();
+            //map initialization
+            Chamber c0 = new Chamber();
+            Chamber c1 = new Chamber();
+            Chamber c2 = new Chamber();
+            Chamber c3 = new Chamber();
+            Chamber c4 = new Chamber();
+            Chamber c5 = new Chamber();
+            Chamber c6 = new Chamber();
+            Chamber c7 = new Chamber();
 
-            cA.Left = cB; cB.Previous = cA;
-            cA.Right = cC; cC.Previous = cA;
+            //chamber structure
+            c0.Left = c1; c1.Previous = c0;
+            c0.Right = c2; c2.Previous = c0;
 
-            cB.Left = cD; cD.Previous = cB;
-            cB.Right = cE;cE.Previous = cB;
+            c1.Left = c3; c3.Previous = c1;
+            c1.Right = c4;c4.Previous = c1;
             
-            cC.Left = cF; cF.Previous = cC;
+            c2.Left = c5; c5.Previous = c2;
 
-            cD.Left = cG; cG.Previous = cD;
+            c3.Left = c6; c6.Previous = c3;
 
-            cF.Right = cH; cH.Previous = cF;
+            c5.Right = c7; c7.Previous = c5;
+
+            //root chamber is c0
+            Player.CurretChamber = c0;
 
             Console.WriteLine("");
-            cH.BackToOrigin();
 
-            Console.WriteLine("");
+            //Console.WriteLine("c7 Back to Origin");
+            //c7.BackToOrigin();
 
-            HostileNPC hostileNPC = new HostileNPC();
-            cA.Interact(hostileNPC);
+            //add NPC to chamber
+            c1.ChamberNPC = new HostileNPC();
+
+            //return the destination, the end of the game
+            return c7;
         }
     }
 }
