@@ -8,7 +8,7 @@ namespace TsingtaoAdventureGame
 {
     //This is the base class, it has two subclasses:
     //HostileNPC and FriendlyNPC
-    internal class NPC 
+    public class NPC 
     {
         protected string m_sName = "Unamed";
         protected int m_nLevel = 0;
@@ -38,7 +38,7 @@ namespace TsingtaoAdventureGame
         }
 
         //polymorphism
-        public virtual void Interact(Player a_pPlayer)
+        public virtual void Interact()
         {
             Console.WriteLine(" ");
             Console.WriteLine("Interact with " + m_sName);
@@ -46,12 +46,14 @@ namespace TsingtaoAdventureGame
 
         public void Print()
         {
-            Console.WriteLine(" ");
+            Console.WriteLine("");
+            Console.WriteLine("----Initialization Start---- ");
             Console.WriteLine("Name: " + m_sName);
             Console.WriteLine("Level: " + m_nLevel);
-            Console.WriteLine(" ");
+            Console.WriteLine("----Initialization End---- ");
+            Console.WriteLine("");
         }
-
+        public string Name { get { return m_sName; } }
         public int HP { get { return m_nHP; } set { m_nHP = value; } } 
     }
 }
